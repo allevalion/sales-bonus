@@ -4,14 +4,17 @@ function calculateSimpleRevenue(purchase, _product) {
 }
 
 function calculateBonusByProfit(index, total, seller) {
+  const profit =
+    seller.profit !== undefined ? seller.profit : seller.totalProfit || 0;
+
   if (index === 0) {
-    return seller.totalProfit * 0.15;
+    return profit * 0.15;
   } else if (index === 1 || index === 2) {
-    return seller.totalProfit * 0.1;
+    return profit * 0.1;
   } else if (index === total - 1) {
     return 0;
   } else {
-    return seller.totalProfit * 0.05;
+    return profit * 0.05;
   }
 }
 
